@@ -11,10 +11,14 @@ module.exports = {
     'autod',
     'egg-ci',
     'egg-bin',
+    'vscode',
     'eslint',
     'eslint-config-egg',
+    'typescript',
     'contributors',
   ],
-  keep: [],
+  keep: [
+    'vscode',
+  ],
   semver: [],
 };

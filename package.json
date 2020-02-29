@@ -2,11 +2,15 @@
   "name": "singleton-tsserver",
   "version": "1.0.0",
   "description": "singleton tsserver",
-  "main": "index.js",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
   "scripts": {
     "autod": "autod",
-    "lint": "eslint . --ext .js",
-    "cov": "TEST_TIMEOUT=20000 egg-bin cov",
+    "lint": "eslint . --ext .js --fix",
+    "cov": "TEST_TIMEOUT=30000 egg-bin cov",
     "test": "npm run lint && npm run test-local",
     "test-local": "egg-bin test",
     "pkgfiles": "egg-bin pkgfiles --check",
@@ -35,14 +39,24 @@
     "version": "10, 12"
   },
   "dependencies": {
-
+    "await-event": "^2.1.0",
+    "await-first": "^1.0.0",
+    "egg-logger": "^2.4.1",
+    "mz-modules": "^2.1.0",
+    "sdk-base": "^3.6.0",
+    "uuid": "^7.0.1"
   },
   "devDependencies": {
     "autod": "^3.1.0",
+    "await-event": "^2.1.0",
     "contributors": "^0.5.1",
     "egg-bin": "^4.14.1",
     "egg-ci": "^1.13.1",
     "eslint": "^6.8.0",
-    "eslint-config-egg": "^8.0.1"
+    "eslint-config-egg": "^8.0.1",
+    "mm": "^3.0.0",
+    "mz-modules": "^2.1.0",
+    "typescript": "^3.8.3",
+    "vscode": "^1.1.36"
   }
 }
