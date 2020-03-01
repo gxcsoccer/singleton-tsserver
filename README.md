@@ -1,5 +1,5 @@
 # singleton-tsserver
-singleton tsserver
+单实例的 [tsserver](https://github.com/Microsoft/TypeScript/wiki/Standalone-Server-%28tsserver%29)
 
 [![NPM version][npm-image]][npm-url]
 [![build status][travis-image]][travis-url]
@@ -20,3 +20,39 @@ singleton tsserver
 [snyk-url]: https://snyk.io/test/npm/singleton-tsserver
 [download-image]: https://img.shields.io/npm/dm/singleton-tsserver.svg?style=flat-square
 [download-url]: https://npmjs.org/package/singleton-tsserver
+
+针对同样的参数，只启动一个 tsserver 实例
+
+## 用法
+
+```js
+const ClusterTsServerProcess = require('singleton-tsserver');
+
+const options = {
+  tsServerPath: '<tsServerPath>',
+  args: [
+    '--useInferredProjectPerProjectRoot',
+    '--enableTelemetry',
+    '--noGetErrOnBackgroundUpdate',
+    '--validateDefaultNpmLocation',
+  ],
+};
+
+const proc = new ClusterTsServerProcess(options);
+proc.stdout.on('data', data => {
+  console.log(data.toString());
+});
+
+proc.write({
+  seq: 0,
+  type: 'request',
+  command: 'configure',
+  arguments: {
+    hostInfo: 'vscode',
+    preferences: {
+      providePrefixAndSuffixTextForRename: true,
+      allowRenameOfImportPath: true,
+    },
+  },
+});
+```
