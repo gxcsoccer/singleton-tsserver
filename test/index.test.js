@@ -140,4 +140,8 @@ describe('test/index.test.js', () => {
 
     assert(fs.existsSync(logFile));
   });
+
+  it('should support export default', () => {
+    assert(ClusterTsServerProcess === ClusterTsServerProcess.default);
+  });
 });
